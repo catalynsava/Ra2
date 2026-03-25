@@ -91,30 +91,39 @@ namespace Ra
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            Debug.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+            //Debug.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             Program.ucStatus.label1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-            string sql = $"SELECT \r\n";
+            string sql = "SELECT * FROM (SELECT\r\n";
             sql += "    adrese_roluri.id,\r\n";
             sql += "    adrese_roluri.cod_cfg_localitati,\r\n";
             sql += "    adrese_roluri.id_adresa_rol,\r\n";
             sql += "    adrese_roluri.cod_cfg_exploatatii,\r\n";
             sql += "    persoane.tip,\r\n";
             sql += "    persoane.id_persoana,\r\n";
-            sql += "    CONCAT(persoane_fizice.nume, ' ', persoane_fizice.prenume) AS nume_complet,\r\n";
-            sql += "    persoane_juridice.denumire AS denumire_juridica,\r\n";
-            sql += "    persoane_fizice.id_adrese AS id_adrese_fizice,\r\n";
-            sql += "    persoane_juridice.id_adrese AS id_adrese_juridice\r\n";
-            sql += "FROM adrese_roluri\r\n";
-            sql += "LEFT JOIN persoane \r\n";
+            sql += "    persoane_fizice.id_adrese\r\n";
+            sql += " FROM adrese_roluri\r\n";
+            sql += " INNER JOIN persoane\r\n";
             sql += "    ON adrese_roluri.id_persoana = persoane.id\r\n";
-            sql += "LEFT JOIN persoane_fizice \r\n";
-            sql += "    ON persoane.id_persoana = persoane_fizice.id \r\n";
             sql += "    AND persoane.tip IN (1, 2)\r\n";
-            sql += "LEFT JOIN persoane_juridice \r\n";
-            sql += "    ON persoane.id_persoana = persoane_juridice.id \r\n";
-            sql += "    AND persoane.tip IN (3, 4) \r\n";
-            sql += "WHERE adrese_roluri.id = \"" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "\";\r\n";
+            sql += " LEFT JOIN persoane_fizice\r\n";
+            sql += "    ON persoane.id_persoana = persoane_fizice.id\r\n";
+            sql += " UNION ALL\r\n";
+            sql += " SELECT\r\n";
+            sql += "    adrese_roluri.id,\r\n";
+            sql += "    adrese_roluri.cod_cfg_localitati,\r\n";
+            sql += "    adrese_roluri.id_adresa_rol,\r\n";
+            sql += "    adrese_roluri.cod_cfg_exploatatii,\r\n";
+            sql += "    persoane.tip,\r\n";
+            sql += "    persoane.id_persoana,\r\n";
+            sql += "    persoane_juridice.id_adrese\r\n";
+            sql += " FROM adrese_roluri\r\n";
+            sql += " INNER JOIN persoane\r\n";
+            sql += "    ON adrese_roluri.id_persoana = persoane.id\r\n";
+            sql += "    AND persoane.tip IN (3, 4)\r\n";
+            sql += " LEFT JOIN persoane_juridice\r\n";
+            sql += "    ON persoane.id_persoana = persoane_juridice.id ) AS result\r\n";
+            sql += " WHERE result.id = \"" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "\"\r\n";
             Debug.WriteLine(sql);
             sql = "";
         }
