@@ -18,12 +18,12 @@ namespace Ra
         }
         public string GetTextStatus()
         { 
-            return label1.Text; 
+            return labelIdRol.Text; 
         }
 
         public void SetTextStatusl(string value)
         { 
-            label1.Text = value; 
+            labelIdRol.Text = value; 
         }
 
     }

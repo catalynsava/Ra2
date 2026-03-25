@@ -14,6 +14,7 @@ namespace Ra.Database
             connectionStringBuilder.Password = Base64Compress.Decode( Program.parola );
             connectionStringBuilder.Port = Program.port;
             connectionStringBuilder.Pooling = false;
+            connectionStringBuilder.ConnectionTimeout = 5;
 
             try
             {

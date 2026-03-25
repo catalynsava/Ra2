@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            labelIdRol = new Label();
             SuspendLayout();
             // 
-            // label1
+            // labelIdRol
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ControlDarkDark;
-            label1.Location = new Point(9, 7);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 20);
-            label1.TabIndex = 0;
-            label1.Text = "STATUS";
+            labelIdRol.AutoSize = true;
+            labelIdRol.ForeColor = SystemColors.ControlDarkDark;
+            labelIdRol.Location = new Point(9, 7);
+            labelIdRol.Name = "labelIdRol";
+            labelIdRol.Size = new Size(59, 20);
+            labelIdRol.TabIndex = 0;
+            labelIdRol.Text = "STATUS";
             // 
             // ucStatus
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(label1);
+            Controls.Add(labelIdRol);
             Name = "ucStatus";
             Size = new Size(885, 34);
             ResumeLayout(false);
@@ -54,6 +54,6 @@
 
         #endregion
 
-        public Label label1;
+        public Label labelIdRol;
     }
 }

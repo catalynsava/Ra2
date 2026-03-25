@@ -63,36 +63,29 @@ namespace Ra
             sql += " LEFT  JOIN persoane_juridice pj ";
             sql += " ON pers.id_persoana = pj.id";
             sql += " ORDER  BY loc.localitate, rol.tip, rol.volum, rol.pozitie;";
-            
-
-            Conectare.ConectareDB();
 
 
-            MySqlCommand opisCommand = new MySqlCommand();
-            opisCommand.Connection = Program.Conexiune;
-            opisCommand.CommandText = sql;
-            sql = "";
-
-            MySqlDataReader opisReader = opisCommand.ExecuteReader();
-
-            dataGridView1.Rows.Clear();
-            while (opisReader.Read())
+            BazaDeDate.ExecutaQuery(sql, reader =>
             {
-                dataGridView1.Rows.Add(
-                    opisReader.GetString("id"),
-                    opisReader.GetString("localitate"),
-                    opisReader.GetInt32("tip"),
-                    opisReader.GetInt32("volum"),
-                    opisReader.GetInt32("pozitie"),
-                    opisReader.GetString("titular")
-                   );
-            }
-            Conectare.DeconectareDB();
+                dataGridView1.Rows.Clear();
+                while (reader.Read())
+                {
+                    dataGridView1.Rows.Add(
+                        reader.GetString("id"),
+                        reader.GetString("localitate"),
+                        reader.GetInt32("tip"),
+                        reader.GetInt32("volum"),
+                        reader.GetInt32("pozitie"),
+                        reader.GetString("titular")
+                       );
+                }
+            });
+            sql = "";
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             //Debug.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-            Program.ucStatus.label1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            Program.ucStatus.labelIdRol.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
             string sql = "SELECT * FROM (SELECT\r\n";
             sql += "    adrese_roluri.id,\r\n";
@@ -124,8 +117,11 @@ namespace Ra
             sql += " LEFT JOIN persoane_juridice\r\n";
             sql += "    ON persoane.id_persoana = persoane_juridice.id ) AS result\r\n";
             sql += " WHERE result.id = \"" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "\"\r\n";
-            Debug.WriteLine(sql);
-            sql = "";
+
+            BazaDeDate.ExecutaQuery(sql, reader =>
+            {
+                Debug.WriteLine(reader.GetString("id"));
+            });
         }
 
     }
