@@ -21,26 +21,27 @@ namespace Ra.Design
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn;
-            MySqlConnectionStringBuilder connectionBuilder = new MySqlConnectionStringBuilder();
-            connectionBuilder.Server = textServer.Text;
-            connectionBuilder.Database = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
-            connectionBuilder.UserID = textUser.Text;
-            connectionBuilder.Password = textPassword.Text;
-            connectionBuilder.Port = uint.Parse(textPort.Text);
-            connectionBuilder.Pooling = false;
+            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+            builder.Server = textServer.Text;
+            builder.Database = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
+            builder.UserID = textUser.Text;
+            builder.Password = textPassword.Text;
+            builder.Port = uint.Parse(textPort.Text);
+            builder.Pooling = false;
 
             try
             {
-                conn = new MySqlConnection(connectionBuilder.ConnectionString);
-                conn.Open();
-                Program.port = uint.Parse(textPort.Text);
-                Program.server = textServer.Text;
-                Program.bazadedate = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
-                Program.utilizator = textUser.Text;
-                Program.parola = Base64Compress.Encode(textPassword.Text);
-                Program.IsLoggedIn = true;
-                conn.Close();
+                using (var conn = new MySqlConnection(builder.ConnectionString))
+                {
+                    conn.Open(); // aici se face autentificarea cu MySQL
+                    Program.port = uint.Parse(textPort.Text);
+                    Program.server = textServer.Text;
+                    Program.bazadedate = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
+                    Program.utilizator = textUser.Text;
+                    Program.parola = Base64Compress.Encode(textPassword.Text);
+                    Program.IsLoggedIn = true;
+                    Debug.WriteLine("Conexiunea a fost realizata cu succes!");
+                }
             }
             catch (MySqlException ex)
             {

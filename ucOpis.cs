@@ -85,7 +85,6 @@ namespace Ra
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            //Debug.WriteLine(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
             Program.ucStatus.labelIdRol.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
             string sql = "SELECT * FROM (SELECT\r\n";
@@ -121,7 +120,15 @@ namespace Ra
 
             BazaDeDate.ExecutaQuery(sql, reader =>
             {
-                Debug.WriteLine(reader.GetString("id"));
+                Debug.WriteLine(
+                    "\r\n" + "idrol: " + reader.GetString("id") + "\r\n"
+                    + "tip rol:" + reader.GetInt16("tip") + "\r\n"
+                    + "adresa rol:" + reader.GetString("id_adresa_rol") + "\r\n"
+                    + "cod exploatatie:" + reader.GetInt16("cod_cfg_exploatatii") + "\r\n"
+                    + "cod localitate:" + reader.GetInt16("cod_cfg_localitati") + "\r\n"
+                    + "id persoana:" + reader.GetString("id_persoana") + "\r\n"
+                    + "id adresa persoana:" + reader.GetString("id_adrese") + "\r\n"
+                 );
             });
         }
 
