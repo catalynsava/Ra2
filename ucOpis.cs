@@ -26,16 +26,17 @@ namespace Ra
             dataGridView1.ColumnCount = 6;
 
             dataGridView1.Columns[0].Name = "id";
-            dataGridView1.Columns[1].Name = "localitate";
-            dataGridView1.Columns[1].Width = 90;
-            dataGridView1.Columns[2].Name = "tip";
-            dataGridView1.Columns[2].Width = 15;
-            dataGridView1.Columns[3].Name = "volum";
+            dataGridView1.Columns[1].Name = "titular";
+            dataGridView1.Columns[1].Width = 110;
+            dataGridView1.Columns[2].Name = "localitate";
+            dataGridView1.Columns[2].Width = 90;
+            dataGridView1.Columns[3].Name = "tip";
             dataGridView1.Columns[3].Width = 15;
-            dataGridView1.Columns[4].Name = "pozitie";
+            dataGridView1.Columns[4].Name = "volum";
             dataGridView1.Columns[4].Width = 15;
-            dataGridView1.Columns[5].Name = "titular";
-            dataGridView1.Columns[5].Width = 110;
+            dataGridView1.Columns[5].Name = "pozitie";
+            dataGridView1.Columns[5].Width = 15;
+            
 
 
             dataGridView1.Columns["id"].Visible = false;
@@ -72,11 +73,11 @@ namespace Ra
                 {
                     dataGridView1.Rows.Add(
                         reader.GetString("id"),
+                        reader.GetString("titular"),
                         reader.GetString("localitate"),
                         reader.GetInt32("tip"),
                         reader.GetInt32("volum"),
-                        reader.GetInt32("pozitie"),
-                        reader.GetString("titular")
+                        reader.GetInt32("pozitie")
                        );
                 }
             });
