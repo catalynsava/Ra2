@@ -157,7 +157,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RA";
             FormClosing += frmLogin_FormClosing;
-            Load += frmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

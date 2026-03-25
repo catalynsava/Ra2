@@ -58,7 +58,7 @@ namespace Ra
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(335, 568);
+            dataGridView1.Size = new Size(176, 164);
             dataGridView1.TabIndex = 0;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
@@ -70,7 +70,7 @@ namespace Ra
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ucOpis";
-            Size = new Size(335, 568);
+            Size = new Size(176, 164);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
 

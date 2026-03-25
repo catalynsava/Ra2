@@ -63,12 +63,6 @@ namespace Ra.Design
             {
                 Program.parola = "";
             }
-
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
