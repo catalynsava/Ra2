@@ -19,6 +19,7 @@ namespace Ra
         internal static ucOpis? ucOpis;
         internal static ucButoane? ucButoane;
         internal static ucStatus? ucStatus;
+        internal static ucPozitie? ucPozitie;
 
         [STAThread]
         static void Main()

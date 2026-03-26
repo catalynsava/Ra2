@@ -44,7 +44,7 @@
             // 
             // textUser
             // 
-            textUser.Location = new Point(182, 118);
+            textUser.Location = new Point(141, 73);
             textUser.Name = "textUser";
             textUser.Size = new Size(177, 27);
             textUser.TabIndex = 4;
@@ -52,7 +52,7 @@
             // textPassword
             // 
             textPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            textPassword.Location = new Point(182, 151);
+            textPassword.Location = new Point(141, 106);
             textPassword.Name = "textPassword";
             textPassword.PasswordChar = '●';
             textPassword.Size = new Size(177, 27);
@@ -61,32 +61,33 @@
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(265, 217);
+            buttonLogin.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            buttonLogin.Location = new Point(240, 172);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(94, 45);
+            buttonLogin.Size = new Size(77, 45);
             buttonLogin.TabIndex = 1;
-            buttonLogin.Text = "Login";
+            buttonLogin.Text = "LOGIN";
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
             // 
             // textBazaDeDate
             // 
             textBazaDeDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            textBazaDeDate.Location = new Point(182, 184);
+            textBazaDeDate.Location = new Point(141, 139);
             textBazaDeDate.Name = "textBazaDeDate";
             textBazaDeDate.Size = new Size(177, 27);
             textBazaDeDate.TabIndex = 5;
             // 
             // textServer
             // 
-            textServer.Location = new Point(182, 52);
+            textServer.Location = new Point(141, 7);
             textServer.Name = "textServer";
             textServer.Size = new Size(177, 27);
             textServer.TabIndex = 2;
             // 
             // textPort
             // 
-            textPort.Location = new Point(282, 85);
+            textPort.Location = new Point(240, 40);
             textPort.Name = "textPort";
             textPort.Size = new Size(77, 27);
             textPort.TabIndex = 3;
@@ -94,7 +95,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(78, 56);
+            label1.Font = new Font("Segoe UI", 9F);
+            label1.Location = new Point(12, 16);
             label1.Name = "label1";
             label1.Size = new Size(51, 20);
             label1.TabIndex = 6;
@@ -103,7 +105,8 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(78, 89);
+            label2.Font = new Font("Segoe UI", 9F);
+            label2.Location = new Point(12, 49);
             label2.Name = "label2";
             label2.Size = new Size(40, 20);
             label2.TabIndex = 7;
@@ -112,7 +115,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(78, 122);
+            label3.Font = new Font("Segoe UI", 9F);
+            label3.Location = new Point(12, 82);
             label3.Name = "label3";
             label3.Size = new Size(71, 20);
             label3.TabIndex = 8;
@@ -121,7 +125,8 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(78, 155);
+            label4.Font = new Font("Segoe UI", 9F);
+            label4.Location = new Point(12, 112);
             label4.Name = "label4";
             label4.Size = new Size(55, 20);
             label4.TabIndex = 9;
@@ -130,7 +135,8 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(78, 184);
+            label5.Font = new Font("Segoe UI", 9F);
+            label5.Location = new Point(12, 145);
             label5.Name = "label5";
             label5.Size = new Size(99, 20);
             label5.TabIndex = 10;
@@ -138,20 +144,20 @@
             // 
             // labelLogin
             // 
-            labelLogin.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            labelLogin.ForeColor = SystemColors.ControlDarkDark;
-            labelLogin.Location = new Point(0, 262);
+            labelLogin.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            labelLogin.ForeColor = Color.Red;
+            labelLogin.Location = new Point(9, 172);
             labelLogin.Name = "labelLogin";
-            labelLogin.Size = new Size(434, 50);
+            labelLogin.Size = new Size(225, 52);
             labelLogin.TabIndex = 11;
             labelLogin.Text = "...";
-            labelLogin.TextAlign = ContentAlignment.BottomCenter;
+            labelLogin.TextAlign = ContentAlignment.TopCenter;
             // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(436, 315);
+            ClientSize = new Size(327, 231);
             Controls.Add(labelLogin);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -164,6 +170,7 @@
             Controls.Add(buttonLogin);
             Controls.Add(textPassword);
             Controls.Add(textUser);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmLogin";
