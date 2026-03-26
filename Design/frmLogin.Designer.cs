@@ -39,30 +39,32 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            labelLogin = new Label();
             SuspendLayout();
             // 
             // textUser
             // 
-            textUser.Location = new Point(133, 82);
+            textUser.Location = new Point(182, 118);
             textUser.Name = "textUser";
             textUser.Size = new Size(177, 27);
-            textUser.TabIndex = 0;
+            textUser.TabIndex = 4;
             // 
             // textPassword
             // 
             textPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            textPassword.Location = new Point(133, 115);
+            textPassword.Location = new Point(182, 151);
             textPassword.Name = "textPassword";
             textPassword.PasswordChar = '●';
             textPassword.Size = new Size(177, 27);
             textPassword.TabIndex = 0;
+            textPassword.KeyUp += textPassword_KeyUp;
             // 
             // buttonLogin
             // 
-            buttonLogin.Location = new Point(216, 181);
+            buttonLogin.Location = new Point(265, 217);
             buttonLogin.Name = "buttonLogin";
-            buttonLogin.Size = new Size(94, 37);
-            buttonLogin.TabIndex = 2;
+            buttonLogin.Size = new Size(94, 45);
+            buttonLogin.TabIndex = 1;
             buttonLogin.Text = "Login";
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
@@ -70,29 +72,29 @@
             // textBazaDeDate
             // 
             textBazaDeDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 238);
-            textBazaDeDate.Location = new Point(133, 148);
+            textBazaDeDate.Location = new Point(182, 184);
             textBazaDeDate.Name = "textBazaDeDate";
             textBazaDeDate.Size = new Size(177, 27);
-            textBazaDeDate.TabIndex = 3;
+            textBazaDeDate.TabIndex = 5;
             // 
             // textServer
             // 
-            textServer.Location = new Point(133, 16);
+            textServer.Location = new Point(182, 52);
             textServer.Name = "textServer";
             textServer.Size = new Size(177, 27);
-            textServer.TabIndex = 4;
+            textServer.TabIndex = 2;
             // 
             // textPort
             // 
-            textPort.Location = new Point(233, 49);
+            textPort.Location = new Point(282, 85);
             textPort.Name = "textPort";
             textPort.Size = new Size(77, 27);
-            textPort.TabIndex = 5;
+            textPort.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(29, 16);
+            label1.Location = new Point(78, 56);
             label1.Name = "label1";
             label1.Size = new Size(51, 20);
             label1.TabIndex = 6;
@@ -101,7 +103,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(29, 49);
+            label2.Location = new Point(78, 89);
             label2.Name = "label2";
             label2.Size = new Size(40, 20);
             label2.TabIndex = 7;
@@ -110,7 +112,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(29, 82);
+            label3.Location = new Point(78, 122);
             label3.Name = "label3";
             label3.Size = new Size(71, 20);
             label3.TabIndex = 8;
@@ -119,7 +121,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(29, 115);
+            label4.Location = new Point(78, 155);
             label4.Name = "label4";
             label4.Size = new Size(55, 20);
             label4.TabIndex = 9;
@@ -128,17 +130,29 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(29, 148);
+            label5.Location = new Point(78, 184);
             label5.Name = "label5";
             label5.Size = new Size(99, 20);
             label5.TabIndex = 10;
             label5.Text = "baza de date:";
             // 
+            // labelLogin
+            // 
+            labelLogin.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            labelLogin.ForeColor = SystemColors.ControlDarkDark;
+            labelLogin.Location = new Point(0, 262);
+            labelLogin.Name = "labelLogin";
+            labelLogin.Size = new Size(434, 50);
+            labelLogin.TabIndex = 11;
+            labelLogin.Text = "...";
+            labelLogin.TextAlign = ContentAlignment.BottomCenter;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(338, 234);
+            ClientSize = new Size(436, 315);
+            Controls.Add(labelLogin);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -174,5 +188,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label labelLogin;
     }
 }

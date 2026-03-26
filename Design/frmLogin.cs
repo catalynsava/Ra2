@@ -21,6 +21,24 @@ namespace Ra.Design
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            DoLogin();
+        }
+
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (textUser.Text == "")
+            {
+                Program.utilizator = "";
+            }
+            if (textPassword.Text == "")
+            {
+                Program.parola = "";
+            }
+        }
+
+        private void DoLogin()
+        {
+            labelLogin.Text = "";
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
             builder.Server = textServer.Text;
             builder.Database = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
@@ -41,28 +59,26 @@ namespace Ra.Design
                     Program.parola = Base64Compress.Encode(textPassword.Text);
                     Program.IsLoggedIn = true;
                     Debug.WriteLine("Conexiunea a fost realizata cu succes!");
+                    labelLogin.Text = "Conexiunea a fost realizata cu succes!";
+                    this.Close();
                 }
             }
             catch (MySqlException ex)
             {
                 Debug.WriteLine("Number:" + ex.Number + "\r\nMessage: " + ex.Message + "\r\nStackTrace:\r\n" + ex.StackTrace);
+                labelLogin.Text = ex.Message;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
             }
-            this.Close();
         }
 
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        private void textPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            if (textUser.Text == "")
+            if (e.KeyCode == Keys.Enter)
             {
-                Program.utilizator = "";
-            }
-            if (textPassword.Text == "")
-            {
-                Program.parola = "";
+                DoLogin();
             }
         }
     }
