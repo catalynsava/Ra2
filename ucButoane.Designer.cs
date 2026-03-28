@@ -72,8 +72,7 @@
             // 
             // ucButoane
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             BorderStyle = BorderStyle.Fixed3D;
             Controls.Add(button4);
             Controls.Add(button3);

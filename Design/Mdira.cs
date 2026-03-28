@@ -69,6 +69,10 @@ namespace Ra.Design
             Program.ucPozitie.Dock = DockStyle.Fill;
             panelRight.Controls.Clear();
             panelRight.Controls.Add(Program.ucPozitie);
+            //panelRight.Controls.Clear();
+            //panelRight.Controls.Add(mainTable);
+
+
         }
     }
 }

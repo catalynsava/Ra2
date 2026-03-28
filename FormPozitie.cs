@@ -4,21 +4,17 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ra
 {
-    public partial class ucPozitie : UserControl
+    public partial class FormPozitie : Form
     {
-        public ucPozitie()
+        public FormPozitie()
         {
             InitializeComponent();
-          
-
-            
         }
     }
 }

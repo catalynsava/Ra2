@@ -32,8 +32,7 @@
             // 
             // Mdira
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1261, 683);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             IsMdiContainer = true;

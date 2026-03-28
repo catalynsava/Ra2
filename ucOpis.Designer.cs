@@ -64,8 +64,7 @@ namespace Ra
             // 
             // ucOpis
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.None;
             Controls.Add(dataGridView1);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Margin = new Padding(3, 4, 3, 4);
