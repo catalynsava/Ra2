@@ -23,7 +23,7 @@ namespace Ra.Design
             Panel panelBottom = new Panel();
 
             panelTop.Height = 30;
-            panelLeft.Width = 270;
+            panelLeft.Width = 285;
             panelMiddle.Width = 150;
             panelBottom.Height = 30;
 

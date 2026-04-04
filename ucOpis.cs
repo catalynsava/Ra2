@@ -35,7 +35,7 @@ namespace Ra
             dataGridView1.Columns[4].Name = "volum";
             dataGridView1.Columns[4].Width = 15;
             dataGridView1.Columns[5].Name = "pozitie";
-            dataGridView1.Columns[5].Width = 15;
+            dataGridView1.Columns[5].Width = 33;
             
 
 
@@ -47,7 +47,7 @@ namespace Ra
 
         public void citesteOpis()
         {
-            string sql = $"SELECT ";
+            /*string sql = $"SELECT ";
             sql += "rol.id";
             sql += ", loc.localitate";
             sql += ", rol.tip";
@@ -63,7 +63,31 @@ namespace Ra
             sql += " ON pers.id_persoana = pf.id";
             sql += " LEFT  JOIN persoane_juridice pj ";
             sql += " ON pers.id_persoana = pj.id";
-            sql += " ORDER  BY loc.localitate, rol.tip, rol.volum, rol.pozitie;";
+            sql += " ORDER  BY loc.localitate, rol.tip, rol.volum, rol.pozitie;";*/
+            string sql = "SELECT ";
+            sql += " ar.id,";
+            sql += " cl.localitate,";
+            sql += " ar.tip,";
+            sql += " ar.volum,";
+            sql += " ar.pozitie,";
+            sql += " CASE ";
+            sql += " WHEN ar.tip IN (1,2) THEN CONCAT_WS(' ', pf.nume, pf.initiala, pf.prenume)";
+            sql += " WHEN ar.tip IN (3,4) THEN CONCAT_WS(' ', pj.denumire, fo.abreviere)";
+            sql += " END AS titular";
+            sql += " FROM adrese_roluri ar";
+            sql += " INNER JOIN cfg_localitati cl ";
+            sql += " ON ar.cod_cfg_localitati = cl.cod";
+            sql += " LEFT JOIN persoane_fizice pf ";
+            sql += " ON ar.id_persoana = pf.id AND ar.tip IN (1,2)";
+            sql += " LEFT JOIN persoane_juridice pj ";
+            sql += " ON ar.id_persoana = pj.id AND ar.tip IN (3,4)";
+            sql += " LEFT JOIN cfg_forme_organizare AS fo";
+            sql += " ON pj.cod_forma_organizare = fo.cod";
+            sql += " ORDER BY ";
+            sql += " cl.localitate,";
+            sql += " ar.tip,";
+            sql += " ar.volum,";
+            sql += " ar.pozitie;";
 
 
             BazaDeDate.ExecutaQuery(sql, reader =>
@@ -87,48 +111,43 @@ namespace Ra
         {
             Program.ucStatus.labelIdRol.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
 
-            string sql = "SELECT * FROM (SELECT\r\n";
-            sql += "    adrese_roluri.id,\r\n";
-            sql += "    adrese_roluri.cod_cfg_localitati,\r\n";
-            sql += "    adrese_roluri.id_adresa_rol,\r\n";
-            sql += "    adrese_roluri.cod_cfg_exploatatii,\r\n";
-            sql += "    persoane.tip,\r\n";
-            sql += "    persoane.id_persoana,\r\n";
-            sql += "    persoane_fizice.id_adrese\r\n";
-            sql += " FROM adrese_roluri\r\n";
-            sql += " INNER JOIN persoane\r\n";
-            sql += "    ON adrese_roluri.id_persoana = persoane.id\r\n";
-            sql += "    AND persoane.tip IN (1, 2)\r\n";
-            sql += " LEFT JOIN persoane_fizice\r\n";
-            sql += "    ON persoane.id_persoana = persoane_fizice.id\r\n";
-            sql += " UNION ALL\r\n";
-            sql += " SELECT\r\n";
-            sql += "    adrese_roluri.id,\r\n";
-            sql += "    adrese_roluri.cod_cfg_localitati,\r\n";
-            sql += "    adrese_roluri.id_adresa_rol,\r\n";
-            sql += "    adrese_roluri.cod_cfg_exploatatii,\r\n";
-            sql += "    persoane.tip,\r\n";
-            sql += "    persoane.id_persoana,\r\n";
-            sql += "    persoane_juridice.id_adrese\r\n";
-            sql += " FROM adrese_roluri\r\n";
-            sql += " INNER JOIN persoane\r\n";
-            sql += "    ON adrese_roluri.id_persoana = persoane.id\r\n";
-            sql += "    AND persoane.tip IN (3, 4)\r\n";
-            sql += " LEFT JOIN persoane_juridice\r\n";
-            sql += "    ON persoane.id_persoana = persoane_juridice.id ) AS result\r\n";
-            sql += " WHERE result.id = \"" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "\"\r\n";
+            string sql = "SELECT";
+            sql += "   ar.id,";
+            sql += "   CASE ";
+            sql += "       WHEN ar.tip IN (1,2) THEN 'PF'";
+            sql += "       WHEN ar.tip IN (3,4) THEN 'PJ'";
+            sql += "   END AS tip_persoana,";
+            sql += "   ar.tip,";
+            sql += "   ar.cod_cfg_localitati,";
+            sql += "   ar.id_adresa_rol,";
+            sql += "   ar.cod_cfg_exploatatii,";
+            sql += "   ar.id_persoana,";
+            sql += "   COALESCE(pf.id_adrese, pj.id_adrese) AS adresa_id_persoana";
+            sql += " FROM adrese_roluri ar";
+            sql += " LEFT JOIN persoane_fizice pf";
+            sql += "   ON ar.id_persoana = pf.id AND ar.tip IN (1,2)";
+            sql += " LEFT JOIN persoane_juridice pj";
+            sql += "   ON ar.id_persoana = pj.id AND ar.tip IN (3,4)";
+            sql += " LEFT JOIN cfg_forme_organizare fo";
+            sql += "   ON pj.cod_forma_organizare = fo.cod";
+            sql += " WHERE ar.id = '" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';";
+
+            Debug.WriteLine(sql);
 
             BazaDeDate.ExecutaQuery(sql, reader =>
             {
-                Debug.WriteLine(
-                    "\r\n" + "idrol: " + reader.GetString("id") + "\r\n"
-                    + "tip rol:" + reader.GetInt16("tip") + "\r\n"
+                var str = "\r\n" + "idrol: " + reader.GetString("id") + "\r\n"
+                    + "tip persoana:" + reader.GetString("tip_persoana") + "\r\n"
+                    + "tip rol:" + reader.GetInt32("tip") + "\r\n"
+                    + "cod localitate:" + reader.GetInt32("cod_cfg_localitati") + "\r\n"
                     + "adresa rol:" + reader.GetString("id_adresa_rol") + "\r\n"
-                    + "cod exploatatie:" + reader.GetInt16("cod_cfg_exploatatii") + "\r\n"
-                    + "cod localitate:" + reader.GetInt16("cod_cfg_localitati") + "\r\n"
+                    + "cod exploatatie:" + reader.GetInt32("cod_cfg_exploatatii") + "\r\n"
                     + "id persoana:" + reader.GetString("id_persoana") + "\r\n"
-                    + "id adresa persoana:" + reader.GetString("id_adrese") + "\r\n"
-                 );
+                    + "id adresa persoana:" + reader.GetString("adresa_id_persoana") + "\r\n";
+                
+
+                Debug.WriteLine(str);
+                Program.ucPozitie.textBox1.Text = str;
             });
         }
 

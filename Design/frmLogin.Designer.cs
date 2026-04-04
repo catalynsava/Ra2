@@ -95,56 +95,56 @@ namespace Ra.Design
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
-            label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Segoe UI", 9F);
-            label1.Location = new Point(3, 0);
+            label1.Location = new Point(3, 10);
             label1.Name = "label1";
-            label1.Size = new Size(132, 41);
+            label1.Size = new Size(51, 20);
             label1.TabIndex = 6;
             label1.Text = "server:";
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 9F);
-            label2.Location = new Point(3, 41);
+            label2.Location = new Point(3, 47);
             label2.Name = "label2";
-            label2.Size = new Size(132, 33);
+            label2.Size = new Size(40, 20);
             label2.TabIndex = 7;
             label2.Text = "port:";
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 9F);
-            label3.Location = new Point(3, 74);
+            label3.Location = new Point(3, 80);
             label3.Name = "label3";
-            label3.Size = new Size(132, 33);
+            label3.Size = new Size(71, 20);
             label3.TabIndex = 8;
             label3.Text = "utilizator:";
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Left;
             label4.AutoSize = true;
-            label4.Dock = DockStyle.Fill;
             label4.Font = new Font("Segoe UI", 9F);
-            label4.Location = new Point(3, 107);
+            label4.Location = new Point(3, 113);
             label4.Name = "label4";
-            label4.Size = new Size(132, 33);
+            label4.Size = new Size(55, 20);
             label4.TabIndex = 9;
             label4.Text = "parola:";
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Dock = DockStyle.Fill;
             label5.Font = new Font("Segoe UI", 9F);
-            label5.Location = new Point(3, 140);
+            label5.Location = new Point(3, 146);
             label5.Name = "label5";
-            label5.Size = new Size(132, 33);
+            label5.Size = new Size(99, 20);
             label5.TabIndex = 10;
             label5.Text = "baza de date:";
             // 

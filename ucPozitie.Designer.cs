@@ -37,6 +37,7 @@
             buttonTipExploatatie = new Button();
             buttonLocalitate = new Button();
             buttonTip = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label3
@@ -123,9 +124,18 @@
             buttonTip.Text = "PERSOANĂ FIZICĂ LOCALNICĂ";
             buttonTip.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(17, 157);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(466, 123);
+            textBox1.TabIndex = 27;
+            // 
             // ucPozitie
             // 
             AutoScaleMode = AutoScaleMode.None;
+            Controls.Add(textBox1);
             Controls.Add(label3);
             Controls.Add(textBoxStrada);
             Controls.Add(label2);
@@ -138,7 +148,7 @@
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Margin = new Padding(3, 4, 3, 4);
             Name = "ucPozitie";
-            Size = new Size(500, 213);
+            Size = new Size(979, 425);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -154,5 +164,6 @@
         private Button buttonTipExploatatie;
         private Button buttonLocalitate;
         private Button buttonTip;
+        public TextBox textBox1;
     }
 }
