@@ -181,6 +181,7 @@
             tableLayoutPozitie.Dock = DockStyle.Fill;
             tableLayoutPozitie.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
             tableLayoutPozitie.Location = new Point(0, 0);
+            tableLayoutPozitie.Margin = new Padding(20);
             tableLayoutPozitie.Name = "tableLayoutPozitie";
             tableLayoutPozitie.RowCount = 18;
             tableLayoutPozitie.RowStyles.Add(new RowStyle(SizeType.Percent, 5.576383F));
