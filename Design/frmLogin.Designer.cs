@@ -64,7 +64,7 @@ namespace Ra.Design
             textPassword.PasswordChar = '●';
             textPassword.Size = new Size(177, 27);
             textPassword.TabIndex = 0;
-            textPassword.KeyUp += textPassword_KeyUp;
+            textPassword.KeyDown += textPassword_KeyDown;
             // 
             // textBazaDeDate
             // 
@@ -203,6 +203,7 @@ namespace Ra.Design
             buttonLogin.Text = "LOGIN";
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
+            buttonLogin.KeyDown += buttonLogin_KeyDown;
             // 
             // frmLogin
             // 

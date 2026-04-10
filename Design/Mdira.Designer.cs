@@ -33,13 +33,14 @@
             // Mdira
             // 
             AutoScaleMode = AutoScaleMode.None;
-            ClientSize = new Size(1044, 524);
+            ClientSize = new Size(927, 666);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 238);
             IsMdiContainer = true;
             Margin = new Padding(4, 3, 4, 3);
             Name = "Mdira";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RA";
+            Load += Mdira_Load;
             ResumeLayout(false);
         }
 

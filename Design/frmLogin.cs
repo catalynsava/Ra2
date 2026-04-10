@@ -1,7 +1,6 @@
 ﻿using MySqlConnector;
 using Ra.Database;
 using System.Configuration;
-using System.Data.Common;
 using System.Diagnostics;
 
 
@@ -12,7 +11,6 @@ namespace Ra.Design
         public frmLogin()
         {
             InitializeComponent();
-
             textServer.Text = ConfigurationManager.AppSettings["server"];
             textPort.Text = ConfigurationManager.AppSettings["port"];
             textUser.Text = ConfigurationManager.AppSettings["utilizator"];
@@ -35,7 +33,6 @@ namespace Ra.Design
                 Program.parola = "";
             }
         }
-
         private void DoLogin()
         {
             labelLogin.Text = "";
@@ -51,7 +48,7 @@ namespace Ra.Design
             {
                 using (var conn = new MySqlConnection(builder.ConnectionString))
                 {
-                    conn.Open(); // aici se face autentificarea cu MySQL
+                    conn.Open();
                     Program.port = uint.Parse(textPort.Text);
                     Program.server = textServer.Text;
                     Program.bazadedate = ConfigurationManager.AppSettings["numeclient"] + "_" + textBazaDeDate.Text;
@@ -74,10 +71,23 @@ namespace Ra.Design
             }
         }
 
-        private void textPassword_KeyUp(object sender, KeyEventArgs e)
+        private void buttonLogin_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
+                //e.SuppressKeyPress = true;
+                DoLogin();
+            }
+        }
+        
+        private void textPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+     
+            if (e.KeyCode == Keys.Enter)
+            {
+                //e.SuppressKeyPress = true;
                 DoLogin();
             }
         }

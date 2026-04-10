@@ -112,6 +112,7 @@
             buttonLocalitate.TabIndex = 10;
             buttonLocalitate.Text = "LOCALITATE";
             buttonLocalitate.UseVisualStyleBackColor = true;
+            buttonLocalitate.Click += buttonLocalitate_Click;
             // 
             // buttonTip
             // 
@@ -122,21 +123,22 @@
             buttonTip.TabIndex = 9;
             buttonTip.Text = "PERSOANĂ FIZICĂ LOCALNICĂ";
             buttonTip.UseVisualStyleBackColor = true;
+            buttonTip.Click += buttonTip_Click;
             // 
             // FormPozitie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(549, 521);
+            Controls.Add(buttonTipExploatatie);
+            Controls.Add(buttonLocalitate);
+            Controls.Add(buttonTip);
             Controls.Add(label3);
             Controls.Add(textBoxStrada);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(textBoxPozitie);
             Controls.Add(textBoxVolum);
-            Controls.Add(buttonTipExploatatie);
-            Controls.Add(buttonLocalitate);
-            Controls.Add(buttonTip);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormPozitie";
             Text = "FormPozitie";

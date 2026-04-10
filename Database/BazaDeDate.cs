@@ -20,23 +20,28 @@ namespace Ra.Database
             Pooling = false,
             ConnectionTimeout = 10
         };
-        public static void ExecutaQuery(string sql, Action<MySqlDataReader> actiune)
+        public static void ExecutaQuery(string sql, List<MySqlParameter> parametri, Action<MySqlDataReader> actiune)
         {
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
                 conn.Open();
 
                 using (var cmd = new MySqlCommand(sql, conn))
-                using (var reader = cmd.ExecuteReader())
                 {
-                    while (reader.Read())
+                    if (parametri != null)
+                        cmd.Parameters.AddRange(parametri.ToArray());
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        actiune(reader);
+                        while (reader.Read())
+                        {
+                            actiune(reader);
+                        }
+                    
                     }
                 }
             }
         }
-        public static int ExecutaNonQuery(string sql)
+        public static int ExecutaNonQuery(string sql, List<MySqlParameter> parametri)
         {
             using (var conn = new MySqlConnection(builder.ConnectionString))
             {
@@ -44,6 +49,10 @@ namespace Ra.Database
 
                 using (var cmd = new MySqlCommand(sql, conn))
                 {
+                    if (parametri != null)
+                    {
+                        cmd.Parameters.AddRange(parametri.ToArray());
+                    }
                     return cmd.ExecuteNonQuery();
                 }
             }

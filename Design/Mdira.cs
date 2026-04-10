@@ -24,7 +24,7 @@ namespace Ra.Design
 
             panelTop.Height = 30;
             panelLeft.Width = 285;
-            panelMiddle.Width = 150;
+            panelMiddle.Width = 125;
             panelBottom.Height = 30;
 
             //panelLeft.BackColor = Color.Red;
@@ -72,6 +72,11 @@ namespace Ra.Design
             //panelRight.Controls.Clear();
             //panelRight.Controls.Add(mainTable);
 
+
+        }
+
+        private void Mdira_Load(object sender, EventArgs e)
+        {
 
         }
     }
