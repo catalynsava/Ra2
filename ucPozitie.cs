@@ -45,10 +45,10 @@ namespace Ra
         }
         internal static void load_mnuCfg_localitati()
         {
-            string sql = "SELECT cfg_localitati.cod, cfg_localitati.localitate, cfg_localitati.cod_siruta, cfg_localitati.cod_postal FROM cfg_localitati;";
+            string sql = "SELECT cfg_localitati.cod, cfg_localitati.denumire, cfg_localitati.cod_siruta, cfg_localitati.cod_postal FROM cfg_localitati;";
             BazaDeDate.ExecutaQuery(sql, null, reader =>
             {
-                mnuCfg_localitati.Items.Add(reader.GetString(reader.GetOrdinal("localitate")));
+                mnuCfg_localitati.Items.Add(reader.GetString(reader.GetOrdinal("denumire")));
             });
         }
         internal static void load_cfg_tip_roluri()

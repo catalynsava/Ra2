@@ -91,21 +91,21 @@
             // textBoxPozitie
             // 
             textBoxPozitie.Dock = DockStyle.Fill;
-            textBoxPozitie.Font = new Font("Segoe UI", 9.75F);
+            textBoxPozitie.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 238);
             textBoxPozitie.Location = new Point(387, 84);
             textBoxPozitie.Margin = new Padding(3, 4, 3, 4);
             textBoxPozitie.Name = "textBoxPozitie";
-            textBoxPozitie.Size = new Size(124, 29);
+            textBoxPozitie.Size = new Size(124, 31);
             textBoxPozitie.TabIndex = 22;
             // 
             // textBoxVolum
             // 
             textBoxVolum.Dock = DockStyle.Fill;
-            textBoxVolum.Font = new Font("Segoe UI", 9.75F);
+            textBoxVolum.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 238);
             textBoxVolum.Location = new Point(131, 84);
             textBoxVolum.Margin = new Padding(3, 4, 3, 4);
             textBoxVolum.Name = "textBoxVolum";
-            textBoxVolum.Size = new Size(122, 29);
+            textBoxVolum.Size = new Size(122, 31);
             textBoxVolum.TabIndex = 21;
             // 
             // buttonTipExploatatie
@@ -140,7 +140,7 @@
             // 
             tableLayoutPozitie.SetColumnSpan(buttonTip, 2);
             buttonTip.Dock = DockStyle.Fill;
-            buttonTip.Font = new Font("Segoe UI", 9.75F);
+            buttonTip.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 238);
             buttonTip.Location = new Point(3, 4);
             buttonTip.Margin = new Padding(3, 4, 3, 4);
             buttonTip.Name = "buttonTip";
@@ -158,6 +158,7 @@
             textBox1.Multiline = true;
             textBox1.Name = "textBox1";
             tableLayoutPozitie.SetRowSpan(textBox1, 8);
+            textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(508, 311);
             textBox1.TabIndex = 27;
             // 
@@ -169,16 +170,16 @@
             tableLayoutPozitie.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPozitie.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPozitie.Controls.Add(buttonTip, 0, 0);
-            tableLayoutPozitie.Controls.Add(label1, 0, 2);
             tableLayoutPozitie.Controls.Add(textBoxVolum, 1, 2);
-            tableLayoutPozitie.Controls.Add(label2, 2, 2);
             tableLayoutPozitie.Controls.Add(textBoxPozitie, 3, 2);
-            tableLayoutPozitie.Controls.Add(label3, 0, 3);
             tableLayoutPozitie.Controls.Add(textBoxStrada, 1, 3);
             tableLayoutPozitie.Controls.Add(buttonLocalitate, 2, 0);
             tableLayoutPozitie.Controls.Add(buttonTipExploatatie, 0, 1);
             tableLayoutPozitie.Controls.Add(textBox1, 0, 4);
-            tableLayoutPozitie.Dock = DockStyle.Fill;
+            tableLayoutPozitie.Controls.Add(label2, 2, 2);
+            tableLayoutPozitie.Controls.Add(label1, 0, 2);
+            tableLayoutPozitie.Controls.Add(label3, 0, 3);
+            tableLayoutPozitie.Dock = DockStyle.Top;
             tableLayoutPozitie.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
             tableLayoutPozitie.Location = new Point(0, 0);
             tableLayoutPozitie.Margin = new Padding(20);
@@ -224,14 +225,14 @@
         #endregion
 
         private Label label3;
-        private TextBox textBoxStrada;
+        public TextBox textBoxStrada;
         private Label label2;
         private Label label1;
-        private TextBox textBoxPozitie;
-        private TextBox textBoxVolum;
-        private Button buttonTipExploatatie;
-        private Button buttonLocalitate;
-        private Button buttonTip;
+        public TextBox textBoxPozitie;
+        public TextBox textBoxVolum;
+        public Button buttonTipExploatatie;
+        public Button buttonLocalitate;
+        public Button buttonTip;
         public TextBox textBox1;
         private TableLayoutPanel tableLayoutPozitie;
     }
