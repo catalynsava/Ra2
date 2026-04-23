@@ -14,6 +14,7 @@ namespace Ra
         public static MySqlConnection? Conexiune;
         public static bool IsLoggedIn;
 
+        internal static Rol rol;
         internal static frmLogin? frmlogin;
         internal static Mdira? mdiRa;
         internal static ucOpis? ucOpis;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Ra.Database
@@ -62,7 +63,7 @@ namespace Ra.Database
     {
         public string Id { get; set; }
         public FormaDeOrganizare FormaDeOrganizare { get; set; }
-        public string Denumire { get; set; }
+        public string NumePersoanaJuridica { get; set; }
         public string Filiala { get; set; }
         public string Cif { get; set; }
         public string Cui { get; set; }
@@ -72,6 +73,9 @@ namespace Ra.Database
         public string PrenumeReprezentant { get; set; }
         public string Functia { get; set; }
     }
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(PersoanaFizica), "fizica")]
+    [JsonDerivedType(typeof(PersoanaJuridica), "juridica")]
     public abstract class Persoana
     {
         public string Id { get; set; }
@@ -91,9 +95,9 @@ namespace Ra.Database
         public Exploatatie Exploatatie { get; set; }
         public Persoana Persoana { get; set; }
         public string RolImpozite { get; set; }
-        public DateTime DataDeclaratie { get; set; }
+        public DateTime? DataDeclaratie { get; set; }
         public string NrInregistrare { get; set; }
-        public DateTime DataInregistrare { get; set; }
+        public DateTime? DataInregistrare { get; set; }
         public bool Semnat { get; set; }
         public bool Anulat { get; set; }
     }
